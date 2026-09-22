@@ -1,0 +1,13 @@
+Options -Indexes
+DirectoryIndex dist/index.html
+
+<FilesMatch "^\.env">
+  Require all denied
+</FilesMatch>
+
+RewriteEngine On
+RewriteRule ^api/process-photo/?$ api/process-photo.php [L,QSA]
+RewriteRule ^api/send-email/?$ api/send-email.php [L,QSA]
+RewriteRule ^results/(.+)$ public/results/$1 [L]
+RewriteRule ^$ dist/index.html [L]
+RewriteRule ^(assets|templates|favicon\.svg|icons\.svg|logo_big\.png|reference-bg[^/]*\.jpg)(/.*)?$ dist/$1$2 [L]
